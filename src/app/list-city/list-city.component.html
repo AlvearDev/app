@@ -1,0 +1,17 @@
+<section class="content">
+    <h2>Listado de ciudades agrupadas</h2>
+    <div class="list-order-department">
+        <table class="default">
+            <tr>
+              <th>nuª</th>
+             <th>Departamentos</th>
+             <th>Ciudades</th>
+            </tr>
+            <tr *ngFor="let city of newCities ; let i  = index ">
+              <td>{{i+1}}</td>
+              <td>{{city.name}}</td>
+              <td>{{city.cities}}</td>
+            </tr>
+         </table>
+    </div>
+</section>
