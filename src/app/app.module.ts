@@ -1,11 +1,9 @@
 import { apiService } from './services/api-service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { InMemoryDataService } from './services/in-memory-data.service';
 import { ListCityComponent } from './list-city/list-city.component';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -18,7 +16,6 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }) 
   ],
   providers: [apiService],
   bootstrap: [AppComponent]

@@ -1,64 +1,60 @@
-import { Injectable } from '@angular/core';
-import { InMemoryDbService, RequestInfo } from 'angular-in-memory-web-api';
-import { Observable } from 'rxjs';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class InMemoryDataService implements InMemoryDbService  {
-
-  constructor() { }
-  createDb() {
-    return {
-      cities: [
+export const CITIES = [
         {
           id: 1,
           name: 'Barranquilla',
-          department: 'Atlantico'
+          department: 'Atlantico',
+          departmentId: 5
         },
         {
           id: 2,
           name: 'Astrea',
-          department: 'Cesar'
+          department: 'Cesar',
+          departmentId: 2
         },
         {
           id: 3,
           name: 'Cienega',
-          department: 'Magdalena'
+          department: 'Magdalena',
+          departmentId: 8
         },
         {
           id: 4,
           name: 'Puerto Colombia',
-          department: 'Atlantico'
+          department: 'Atlantico',
+          departmentId: 5
         },
         {
           id: 5,
           name: 'Malombo',
-          department: 'Atlantico'
+          department: 'Atlantico',
+          departmentId: 5
         },
         {
           id: 6,
           name: 'Santa Marta',
-          department: 'Magdalena'
+          department: 'Magdalena',
+          departmentId: 8
         },
         {
           id: 7,
           name: 'Valledupar',
-          department: 'Cesar'
+          department: 'Cesar',
+          departmentId: 2
         },
         {
           id: 8,
           name: 'Aguachica',
-          department: 'Cesar'
+          department: 'Cesar',
+          departmentId: 2
         },
         {
           id: 9,
           name: 'El paso',
-          department: 'Cesar'
+          department: 'Cesar',
+          departmentId: 2
         },
         
         
-      ]
-    };
-  }
-}
+      ];
+  
+

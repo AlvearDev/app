@@ -1,6 +1,8 @@
+import { CITIES } from './../services/in-memory-data.service';
 import { Icity, Idepartment } from './../services/Icity';
 import { apiService } from './../services/api-service';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-list-city',
@@ -10,31 +12,27 @@ import { Component, OnInit } from '@angular/core';
 export class ListCityComponent implements OnInit {
    
  public Cities:        Icity         [] = [];
- public newCities:     Idepartment   [] = []
+ public newCities:     Idepartment   [] = [];
+ id: number = 1;
 
   constructor(private _apiService: apiService) { }
   ngOnInit(): void {
-   this.dataCities()
+   const citiesAgrouped = this.groupById(CITIES, 'departmentId', 'department');
+   console.log(citiesAgrouped);
   }
-  dataCities(){
-    this._apiService
-    .Get('cities')
-    .subscribe((res)=>{
-       this.Cities = res
-       this.group(this.Cities)
-    })
-  }
-  group(Cities: Icity[]){
-    var nuevoArray  = []
-    var arrayTemporal = []
-    for(var i=0; i<Cities.length; i++){
-	    arrayTemporal = nuevoArray.filter(resp => resp["name"] == Cities[i]["department"])
+  
+
+  groupById(data: any[], id:string, name?:string) {
+    let nuevoArray:any  = [];
+    let arrayTemporal:any = [];
+    for(let i= 0; i< data.length; i++){
+	    arrayTemporal = nuevoArray.filter((resp:any) => resp["ID"] === data[i][id])
 	    if(arrayTemporal.length>0){
-	        nuevoArray[nuevoArray.indexOf(arrayTemporal[0])]["cities"].push(Cities[i]["name"])
+	        nuevoArray[nuevoArray.indexOf(arrayTemporal[0])]["ROWS"].push(data[i])
 	    }else{
-	        nuevoArray.push({"name" : Cities[i]["department"] , "cities" : [Cities[i]["name"]]})
+	        nuevoArray.push({"ID" : data[i][id] ,"NAME" : data[i][name || id], "ROWS" : [data[i]]})
 	    }
 	  }
-    this.newCities = nuevoArray
-  }
+    return nuevoArray;
+  } 
 }

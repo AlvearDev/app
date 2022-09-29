@@ -17,6 +17,10 @@ import { Icity, Idepartment } from './Icity';
       Get(route: string):Observable<any[]>{
            return   this.http.get<any[]>(this.BaseURL + route) 
       }
+      GetCity(route: string , id: number):Observable<any>{
+        let url = `${this.BaseURL}/${route}/${id}`;
+        return   this.http.get<any>(url) 
+   } 
     }
         
       
